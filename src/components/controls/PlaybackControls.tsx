@@ -21,7 +21,7 @@ interface PlaybackControlsProps {
   onToggleFollowCamera?: () => void;
 }
 
-const SPEED_OPTIONS = [1, 2, 5, 10];
+const SPEED_OPTIONS = [0.5, 1, 2, 5, 10];
 const ZOOM_PRESETS = [9, 11, 13, 15];
 
 function formatDuration(ms: number | undefined): string {
