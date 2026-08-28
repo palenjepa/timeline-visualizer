@@ -14,7 +14,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
     setIsClosing(true);
     setTimeout(() => {
       onDismiss();
-    }, 700); // match bounce-down & slide-up animation duration
+    }, 750); // match 0.75s organic spring bounce & slide-up duration
   };
 
   useEffect(() => {
