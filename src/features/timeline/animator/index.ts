@@ -137,7 +137,20 @@ export function interpolateAtProgress(
   const traveledPath: [number, number][] = (coords ? coords.slice(0, segIndex) : points.slice(0, segIndex).map(p => [p.lat, p.lng]));
   traveledPath.push([lat, lng]);
 
-  const heading = calculateBearing(p1.lat, p1.lng, p2.lat, p2.lng);
+  // Calculate bearing, preserving last known moving heading if stopped at a waypoint
+  let heading = 0;
+  if (p1.lat !== p2.lat || p1.lng !== p2.lng) {
+    heading = calculateBearing(p1.lat, p1.lng, p2.lat, p2.lng);
+  } else {
+    for (let k = prevIndex; k >= 1; k--) {
+      const prevP = points[k - 1];
+      const curP = points[k];
+      if (prevP.lat !== curP.lat || prevP.lng !== curP.lng) {
+        heading = calculateBearing(prevP.lat, prevP.lng, curP.lat, curP.lng);
+        break;
+      }
+    }
+  }
 
   return {
     currentPosition: {
@@ -273,6 +286,7 @@ export function useJourneyAnimator(
   const seek = useCallback((newProgress: number) => {
     const clamped = Math.max(0, Math.min(1, newProgress));
     progressRef.current = clamped;
+    lastTimeRef.current = null;
     setProgress(clamped);
 
     if (clamped >= 1) {

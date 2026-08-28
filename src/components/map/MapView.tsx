@@ -203,9 +203,10 @@ export function MapView({
   const startPoint = journey && journey.points.length > 0 ? journey.points[0] : null;
   const endPoint = journey && journey.points.length > 1 ? journey.points[journey.points.length - 1] : null;
 
+  const roundedHeading = Math.round(heading);
   const dynamicMarkerIcon = useMemo(() => {
-    return createDirectionalPulseIcon(heading);
-  }, [heading]);
+    return createDirectionalPulseIcon(roundedHeading);
+  }, [roundedHeading]);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
