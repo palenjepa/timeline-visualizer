@@ -94,16 +94,36 @@ function MapController({
   currentPosition,
   followCamera = true,
   targetZoom = null,
-  fitTrigger = 0
+  fitTrigger = 0,
+  onUserDrag
 }: {
   journey: Journey | null;
   currentPosition: GPSPoint | null;
   followCamera?: boolean;
   targetZoom?: number | null;
   fitTrigger?: number;
+  onUserDrag?: () => void;
 }) {
   const map = useMap();
   const lastJourneyKeyRef = useRef<string | null>(null);
+  const currentPosRef = useRef<GPSPoint | null>(currentPosition);
+  currentPosRef.current = currentPosition;
+  const followCameraRef = useRef<boolean>(followCamera);
+  followCameraRef.current = followCamera;
+  const onUserDragRef = useRef(onUserDrag);
+  onUserDragRef.current = onUserDrag;
+
+  // Unlatch follow camera if the user manually drags/pans the map
+  useEffect(() => {
+    const handleDragStart = () => {
+      onUserDragRef.current?.();
+    };
+
+    map.on('dragstart', handleDragStart);
+    return () => {
+      map.off('dragstart', handleDragStart);
+    };
+  }, [map]);
 
   // Position camera directly at the starting point when a journey is uploaded or loaded
   useEffect(() => {
@@ -127,17 +147,22 @@ function MapController({
     }
   }, [fitTrigger, journey, map]);
 
-  // Handle zoom preset changes (Fit, 9, 11, 13, 15)
+  // Handle explicit zoom preset changes (Fit, 9, 11, 13, 15) ONLY when targetZoom changes
+  const prevTargetZoomRef = useRef<number | null>(targetZoom);
   useEffect(() => {
-    if (targetZoom !== null && targetZoom > 0) {
-      const center = currentPosition 
-        ? [currentPosition.lat, currentPosition.lng] as [number, number] 
-        : (journey && journey.points.length > 0 ? [journey.points[0].lat, journey.points[0].lng] as [number, number] : map.getCenter());
+    if (targetZoom !== null && targetZoom > 0 && targetZoom !== prevTargetZoomRef.current) {
+      prevTargetZoomRef.current = targetZoom;
+      const cur = currentPosRef.current;
+      const center = (followCameraRef.current && cur)
+        ? [cur.lat, cur.lng] as [number, number]
+        : map.getCenter();
       map.flyTo(center, targetZoom, { animate: true, duration: 0.8, easeLinearity: 0.25 });
+    } else if (targetZoom === null) {
+      prevTargetZoomRef.current = null;
     }
-  }, [targetZoom, currentPosition, journey, map]);
+  }, [targetZoom, map]);
 
-  // Continuous smooth camera tracking when following marker
+  // Continuous smooth camera tracking ONLY when following marker is active
   useEffect(() => {
     if (followCamera && currentPosition) {
       map.setView([currentPosition.lat, currentPosition.lng], map.getZoom(), { animate: false });
@@ -157,6 +182,7 @@ interface MapViewProps {
   targetZoom?: number | null;
   fitTrigger?: number;
   onFitClick?: () => void;
+  onUserDrag?: () => void;
 }
 
 export function MapView({
@@ -168,13 +194,18 @@ export function MapView({
   followCamera = true,
   targetZoom = null,
   fitTrigger = 0,
-  onFitClick
+  onFitClick,
+  onUserDrag
 }: MapViewProps) {
   const [activeThemeId, setActiveThemeId] = useState<string>('dark');
   const currentTheme: MapTheme = MAP_THEMES[activeThemeId] || MAP_THEMES.dark;
 
   const startPoint = journey && journey.points.length > 0 ? journey.points[0] : null;
   const endPoint = journey && journey.points.length > 1 ? journey.points[journey.points.length - 1] : null;
+
+  const baseRoutePositions = useMemo(() => {
+    return journey && journey.points.length > 1 ? journey.points.map(p => [p.lat, p.lng] as [number, number]) : [];
+  }, [journey]);
 
   const dynamicMarkerIcon = useMemo(() => {
     return createDirectionalPulseIcon(heading);
@@ -278,7 +309,23 @@ export function MapView({
         {/* Apply CSS filter to tile pane for color transformation */}
         <TileFilter cssFilter={currentTheme.cssFilter} />
 
-        {/* Multi-Layer Neon Glowing Traveled Route — only drawn during active playback/progress */}
+        {/* Full Planned/Base Route Line (Showing the entire journey path on the road ahead) */}
+        {baseRoutePositions.length > 1 && (
+          <Polyline 
+            key={`base-track-${baseRoutePositions.length}-${baseRoutePositions[0]?.[0]}-${baseRoutePositions[0]?.[1]}`}
+            positions={baseRoutePositions} 
+            pathOptions={{ 
+              color: currentTheme.trackColors.baseTrack, 
+              weight: 5,
+              opacity: 0.65,
+              lineCap: 'round',
+              lineJoin: 'round',
+              dashArray: '8, 8'
+            }} 
+          />
+        )}
+
+        {/* Multi-Layer Neon Glowing Traveled Route — drawn during active playback/progress */}
         {renderedPath.length > 1 && progress > 0 && (
           <>
             <Polyline 
@@ -337,6 +384,7 @@ export function MapView({
           followCamera={followCamera}
           targetZoom={targetZoom}
           fitTrigger={fitTrigger}
+          onUserDrag={onUserDrag}
         />
       </MapContainer>
     </div>

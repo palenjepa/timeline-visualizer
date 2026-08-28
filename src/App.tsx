@@ -100,6 +100,25 @@ function App() {
     setFitTrigger(prev => prev + 1);
   };
 
+  const handleUserDrag = () => {
+    if (followCamera) {
+      setFollowCamera(false);
+    }
+  };
+
+  const handleToggleFollowCamera = () => {
+    if (followCamera) {
+      setFollowCamera(false);
+      setActiveZoomPreset('fit');
+      setTargetZoom(null);
+      setFitTrigger(prev => prev + 1);
+    } else {
+      setFollowCamera(true);
+      setActiveZoomPreset(13);
+      setTargetZoom(13);
+    }
+  };
+
   // 2D Drag resize handler: 'width' (sideways), 'height' (up/down scale), or 'both' (corner)
   const startResizing = useCallback((mode: 'width' | 'height' | 'both', e: React.PointerEvent | React.MouseEvent) => {
     e.preventDefault();
@@ -164,6 +183,7 @@ function App() {
           targetZoom={targetZoom}
           fitTrigger={fitTrigger}
           onFitClick={handleFitRouteClick}
+          onUserDrag={handleUserDrag}
         />
       </div>
 
@@ -302,7 +322,7 @@ function App() {
                   onZoomPresetClick={handleZoomPresetClick}
                   onFitClick={handleFitRouteClick}
                   followCamera={followCamera}
-                  onToggleFollowCamera={() => setFollowCamera(!followCamera)}
+                  onToggleFollowCamera={handleToggleFollowCamera}
                 />
               </div>
             )}
