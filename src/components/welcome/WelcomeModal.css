@@ -8,8 +8,8 @@
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
-  animation: welcomeOverlayFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: opacity 0.45s ease, visibility 0.45s ease;
+  animation: welcomeOverlayFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s ease;
 }
 
 .welcome-overlay.closing {
@@ -18,21 +18,23 @@
   pointer-events: none;
 }
 
-.welcome-overlay.closing .welcome-card {
-  transform: scale(0.92) translateY(16px);
-  opacity: 0;
-}
-
-/* Semi-transparent dark blur backdrop */
+/* Backdrop smooth blur evaporation */
 .welcome-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(5, 5, 12, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.5s ease;
 }
 
-/* Glassmorphism Welcome Card */
+.welcome-overlay.closing .welcome-backdrop {
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+/* Glassmorphism Welcome Card — Swipe Up & Lift Exit Transition */
 .welcome-card {
   position: relative;
   width: 100%;
@@ -54,7 +56,13 @@
   text-align: center;
   gap: 20px;
   overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+  transition: transform 0.5s cubic-bezier(0.32, 0, 0.67, 0), opacity 0.45s ease, filter 0.45s ease;
+}
+
+.welcome-overlay.closing .welcome-card {
+  transform: translateY(-80px) scale(0.96);
+  opacity: 0;
+  filter: blur(6px);
 }
 
 /* Smooth Entrance Scale Animation */
@@ -272,6 +280,14 @@
 .welcome-btn-primary:hover {
   box-shadow: 0 6px 28px rgba(99, 102, 241, 0.7);
   transform: translateY(-2px);
+}
+
+.welcome-btn-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.welcome-btn-primary:hover .welcome-btn-arrow {
+  transform: translateX(4px);
 }
 
 .welcome-btn-primary:active {

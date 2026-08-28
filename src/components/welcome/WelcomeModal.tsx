@@ -13,7 +13,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
     setIsClosing(true);
     setTimeout(() => {
       onDismiss();
-    }, 450); // match fade-out animation duration
+    }, 500); // match swipe-up lift animation duration
   };
 
   useEffect(() => {
@@ -115,7 +115,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
         <div className="welcome-actions">
           <button className="welcome-btn-primary" onClick={handleClose} autoFocus>
             <span>Get Started</span>
-            <ArrowRight size={18} />
+            <ArrowRight size={18} className="welcome-btn-arrow" />
           </button>
         </div>
       </div>
