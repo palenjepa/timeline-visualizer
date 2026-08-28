@@ -10,10 +10,11 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
   const [isClosing, setIsClosing] = useState(false);
 
   const handleClose = () => {
+    if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
       onDismiss();
-    }, 500); // match swipe-up lift animation duration
+    }, 550); // match swipe-up lift animation duration
   };
 
   useEffect(() => {
@@ -24,13 +25,13 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [isClosing]);
 
   return (
     <div className={`welcome-overlay ${isClosing ? 'closing' : ''}`}>
       <div className="welcome-backdrop" onClick={handleClose} />
       
-      <div className="welcome-card animate-welcome-entrance">
+      <div className={`welcome-card ${isClosing ? 'animate-welcome-lift-exit' : 'animate-welcome-entrance'}`}>
         {/* Ambient neon radial glow */}
         <div className="welcome-glow-ambient" />
 
