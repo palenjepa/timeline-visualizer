@@ -203,10 +203,6 @@ export function MapView({
   const startPoint = journey && journey.points.length > 0 ? journey.points[0] : null;
   const endPoint = journey && journey.points.length > 1 ? journey.points[journey.points.length - 1] : null;
 
-  const baseRoutePositions = useMemo(() => {
-    return journey && journey.points.length > 1 ? journey.points.map(p => [p.lat, p.lng] as [number, number]) : [];
-  }, [journey]);
-
   const dynamicMarkerIcon = useMemo(() => {
     return createDirectionalPulseIcon(heading);
   }, [heading]);
@@ -218,25 +214,6 @@ export function MapView({
       document.exitFullscreen().catch(() => {});
     }
   };
-
-  // High-performance adaptive path renderer for massive (10,000+ km) cross-continental journeys
-  const renderedPath = useMemo(() => {
-    if (traveledPath.length <= 1000) return traveledPath;
-
-    const total = traveledPath.length;
-    const recentCount = 200; // Keep the active leading vehicle head at 100% micro-meter resolution
-    const historicalCount = total - recentCount;
-    const stride = Math.ceil(historicalCount / 700);
-
-    const result: [number, number][] = [];
-    for (let i = 0; i < historicalCount; i += stride) {
-      result.push(traveledPath[i]);
-    }
-    for (let i = historicalCount; i < total; i++) {
-      result.push(traveledPath[i]);
-    }
-    return result;
-  }, [traveledPath]);
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -309,27 +286,11 @@ export function MapView({
         {/* Apply CSS filter to tile pane for color transformation */}
         <TileFilter cssFilter={currentTheme.cssFilter} />
 
-        {/* Full Planned/Base Route Line (Showing the entire journey path on the road ahead) */}
-        {baseRoutePositions.length > 1 && (
-          <Polyline 
-            key={`base-track-${baseRoutePositions.length}-${baseRoutePositions[0]?.[0]}-${baseRoutePositions[0]?.[1]}`}
-            positions={baseRoutePositions} 
-            pathOptions={{ 
-              color: currentTheme.trackColors.baseTrack, 
-              weight: 5,
-              opacity: 0.65,
-              lineCap: 'round',
-              lineJoin: 'round',
-              dashArray: '8, 8'
-            }} 
-          />
-        )}
-
-        {/* Multi-Layer Neon Glowing Traveled Route — drawn during active playback/progress */}
-        {renderedPath.length > 1 && progress > 0 && (
+        {/* Multi-Layer Neon Glowing Traveled Route — only drawn during active playback/progress */}
+        {traveledPath.length > 1 && progress > 0 && (
           <>
             <Polyline 
-              positions={renderedPath} 
+              positions={traveledPath} 
               pathOptions={{ 
                 color: currentTheme.trackColors.neonGlow, 
                 weight: 14,
@@ -339,7 +300,7 @@ export function MapView({
               }} 
             />
             <Polyline 
-              positions={renderedPath} 
+              positions={traveledPath} 
               pathOptions={{ 
                 color: currentTheme.trackColors.laserGlow, 
                 weight: 5,
@@ -349,7 +310,7 @@ export function MapView({
               }} 
             />
             <Polyline 
-              positions={renderedPath} 
+              positions={traveledPath} 
               pathOptions={{ 
                 color: currentTheme.trackColors.coreLine, 
                 weight: 2,

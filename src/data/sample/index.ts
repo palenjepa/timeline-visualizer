@@ -127,36 +127,37 @@ export const sampleTokyoDiscovery = createSyntheticJourney(
   6
 );
 
-// 3. Alpine Mountain Pass (Interlaken -> Lauterbrunnen -> Grindelwald -> Grimsel -> Zermatt)
+// 3. Alpine Mountain Pass (Interlaken -> Brienz -> Meiringen -> Grimsel Pass -> Brig -> Visp -> Täsch -> Zermatt)
 export const sampleAlpinePass = createSyntheticJourney(
   'Swiss Alps Mountain Pass',
   [
-    [46.6905, 7.8690], // Interlaken Ost
-    [46.6620, 7.8680], // Wilderswil
-    [46.6320, 7.9010], // Zweilütschinen
-    [46.5980, 7.9080], // Lauterbrunnen Valley (Waterfalls)
-    [46.5560, 7.9020], // Stechelberg
-    [46.6050, 7.9220], // Wengen Alpine Village
-    [46.5851, 8.0124], // Kleine Scheidegg (Eiger North Face)
-    [46.6242, 8.0414], // Grindelwald Glacier Village
-    [46.6560, 8.1020], // Grosse Scheidegg Pass
-    [46.7280, 8.1880], // Meiringen (Reichenbach Falls)
+    [46.6863, 7.8632], // Interlaken
+    [46.6850, 7.8950], // Bönigen
+    [46.7110, 7.9620], // Iseltwald (Lake Brienz)
+    [46.7550, 8.0350], // Brienz
+    [46.7280, 8.1880], // Meiringen (Haslital Valley)
     [46.7020, 8.2280], // Innertkirchen
     [46.6550, 8.2880], // Guttannen
+    [46.6150, 8.3050], // Handegg
     [46.5620, 8.3370], // Grimsel Pass Summit (2,164 m)
-    [46.5620, 8.3610], // Gletsch Rhone Glacier
-    [46.5330, 8.3480], // Oberwald High Valley
-    [46.4020, 8.1320], // Fiesch (Aletsch Glacier)
-    [46.3160, 7.9880], // Brig-Glis (Simplon Pass Junction)
+    [46.5620, 8.3610], // Gletsch (Rhone Glacier)
+    [46.5330, 8.3480], // Oberwald (Goms Valley)
+    [46.5050, 8.3050], // Ulrichen
+    [46.4850, 8.2650], // Münster
+    [46.4020, 8.1320], // Fiesch (Aletsch Area)
+    [46.3550, 8.0450], // Mörel
+    [46.3160, 7.9880], // Brig-Glis (Rhone Valley)
     [46.2930, 7.8810], // Visp
     [46.2320, 7.8710], // Stalden
-    [46.1780, 7.8010], // St. Niklaus Valley
+    [46.2100, 7.8450], // Kalpetran
+    [46.1780, 7.8010], // St. Niklaus (Mattertal Valley)
+    [46.1320, 7.7850], // Herbriggen
     [46.0980, 7.7810], // Randa
     [46.0680, 7.7760], // Täsch
     [46.0207, 7.7491]  // Zermatt (Matterhorn View)
   ],
   '2024-07-22T08:30:00Z',
-  10
+  8
 );
 
 // 4. Trans-Continental Cross-Country (New York to Los Angeles — 4,500+ km)
