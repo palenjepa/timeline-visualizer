@@ -15,17 +15,18 @@
   pointer-events: none;
 }
 
-/* Semi-transparent dark blur backdrop */
+/* Semi-transparent dark blur backdrop with enhanced blur */
 .welcome-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(5, 5, 12, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: backdrop-filter 0.7s ease, opacity 0.7s ease;
 }
 
 .welcome-overlay.closing .welcome-backdrop {
-  animation: welcomeBackdropFadeOut 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: welcomeBackdropFadeOut 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 
 /* Glassmorphism Welcome Card with Well-Defined Height */
@@ -60,9 +61,9 @@
   animation: welcomeCardEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Dynamic Swipe Up & Lift Exit Animation */
+/* Dynamic Bounce-Down & Seamless Slide-Up Exit Animation */
 .animate-welcome-lift-exit {
-  animation: welcomeCardSwipeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+  animation: welcomeCardBounceAndSlideUp 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) forwards !important;
 }
 
 /* Ambient Radial Glow in card background */
@@ -302,8 +303,13 @@
 @keyframes welcomeBackdropFadeOut {
   0% {
     opacity: 1;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  50% {
+    opacity: 0.7;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
   100% {
     opacity: 0;
@@ -325,19 +331,29 @@
   }
 }
 
-@keyframes welcomeCardSwipeUp {
+/* Bounce-down anticipation & seamless high-speed slide up */
+@keyframes welcomeCardBounceAndSlideUp {
   0% {
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: blur(0px);
   }
-  30% {
-    opacity: 0.95;
-    transform: translateY(-30px) scale(1.02);
+  22% {
+    opacity: 1;
+    /* Smooth physical dip / bounce down */
+    transform: translateY(18px) scale(0.985);
+    filter: blur(0px);
+  }
+  48% {
+    opacity: 0.96;
+    /* Rocketing upward */
+    transform: translateY(-50px) scale(1.02);
+    filter: blur(1px);
   }
   100% {
     opacity: 0;
-    transform: translateY(-160px) scale(0.92);
+    /* Seamless high-velocity ascent off-screen */
+    transform: translateY(-100vh) scale(0.9);
     filter: blur(10px);
   }
 }

@@ -14,7 +14,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
     setIsClosing(true);
     setTimeout(() => {
       onDismiss();
-    }, 550); // match swipe-up lift animation duration
+    }, 700); // match bounce-down & slide-up animation duration
   };
 
   useEffect(() => {
