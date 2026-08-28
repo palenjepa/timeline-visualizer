@@ -13,6 +13,7 @@ import { FileDropzone } from './components/upload/FileDropzone';
 import { MapView } from './components/map/MapView';
 import { PlaybackControls } from './components/controls/PlaybackControls';
 import { TopDateHUD } from './components/hud/TopDateHUD';
+import { WelcomeModal } from './components/welcome/WelcomeModal';
 import { parseTimelineData } from './features/timeline/parser';
 import { useJourneyAnimator } from './features/timeline/animator';
 import type { Journey } from './types';
@@ -20,6 +21,7 @@ import { ALL_SAMPLES } from './data/sample';
 import './App.css';
 
 function App() {
+  const [showWelcome, setShowWelcome] = useState<boolean>(true);
   const [journey, setJourney] = useState<Journey | null>(null);
   const [error, setError] = useState<string | null>(null);
   // Default camera in following marker mode
@@ -171,6 +173,11 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Welcome Screen Pop-up on First Open */}
+      {showWelcome && (
+        <WelcomeModal onDismiss={() => setShowWelcome(false)} />
+      )}
+
       {/* Map Layer */}
       <div className="map-container">
         <MapView 

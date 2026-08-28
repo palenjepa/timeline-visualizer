@@ -1,0 +1,347 @@
+/* Welcome Pop-up Overlay Container */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: welcomeOverlayFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.welcome-overlay.closing {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.welcome-overlay.closing .welcome-card {
+  transform: scale(0.92) translateY(16px);
+  opacity: 0;
+}
+
+/* Semi-transparent dark blur backdrop */
+.welcome-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 12, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Glassmorphism Welcome Card */
+.welcome-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(18, 18, 30, 0.92);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-sizing: border-box;
+  box-shadow: 
+    0 24px 64px rgba(0, 0, 0, 0.85),
+    0 0 40px rgba(99, 102, 241, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+/* Smooth Entrance Scale Animation */
+.animate-welcome-entrance {
+  animation: welcomeCardEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ambient Radial Glow in card background */
+.welcome-glow-ambient {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(168, 85, 247, 0.2) 50%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Logo & Pulse Rings */
+.welcome-logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin-top: 4px;
+  z-index: 1;
+}
+
+.welcome-pulse-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  pointer-events: none;
+}
+
+.welcome-pulse-ring.ring-1 {
+  width: 90px;
+  height: 90px;
+  animation: welcomePulseRing 2.4s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.welcome-pulse-ring.ring-2 {
+  width: 115px;
+  height: 115px;
+  animation: welcomePulseRing 2.4s infinite 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.welcome-destination-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 24px rgba(99, 102, 241, 0.5));
+  animation: welcomeFloat 3s ease-in-out infinite;
+}
+
+.welcome-pin-svg {
+  display: block;
+}
+
+.welcome-logo-compass-badge {
+  position: absolute;
+  bottom: 2px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0f0f1c;
+  border: 1.5px solid var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  color: var(--accent-primary);
+}
+
+.compass-spin-icon {
+  animation: welcomeCompassSpin 12s linear infinite;
+}
+
+/* Header & Typography */
+.welcome-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #a5b4fc;
+  text-transform: uppercase;
+}
+
+.welcome-badge-icon {
+  color: #c084fc;
+}
+
+.welcome-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 2px 0 0;
+  line-height: 1.25;
+}
+
+.welcome-desc {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 400px;
+}
+
+/* Features Grid */
+.welcome-features-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.welcome-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.welcome-feature-item:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+.welcome-feature-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.welcome-feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.welcome-feature-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.welcome-feature-sub {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+/* Primary Action Button */
+.welcome-actions {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.welcome-btn-primary {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45);
+  transition: all var(--transition-fast);
+}
+
+.welcome-btn-primary:hover {
+  box-shadow: 0 6px 28px rgba(99, 102, 241, 0.7);
+  transform: translateY(-2px);
+}
+
+.welcome-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Keyframe Animations */
+@keyframes welcomeOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes welcomeCardEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(24px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes welcomeFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes welcomePulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+@keyframes welcomeCompassSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 520px) {
+  .welcome-card {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .welcome-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-title {
+    font-size: 1.28rem;
+  }
+}
