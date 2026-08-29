@@ -115,7 +115,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
 
         {/* Action Button */}
         <div className="welcome-actions">
-          <button className="welcome-btn-primary" onClick={handleClose} autoFocus>
+          <button className="welcome-btn-primary" onClick={handleClose}>
             <span>Get Started</span>
             <ArrowRight size={18} className="welcome-btn-arrow" />
           </button>

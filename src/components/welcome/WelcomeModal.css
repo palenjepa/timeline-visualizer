@@ -19,9 +19,9 @@
 .welcome-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(4, 4, 10, 0.82);
-  backdrop-filter: blur(48px);
-  -webkit-backdrop-filter: blur(48px);
+  background: rgba(4, 4, 10, 0.90);
+  backdrop-filter: blur(56px);
+  -webkit-backdrop-filter: blur(56px);
   opacity: 1;
   transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity;
@@ -44,7 +44,7 @@
   border-radius: var(--radius-lg);
   padding: 34px 28px;
   box-sizing: border-box;
-  box-shadow: 
+  box-shadow:
     0 28px 70px rgba(0, 0, 0, 0.9),
     0 0 45px rgba(99, 102, 241, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -298,6 +298,7 @@
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
   color: #ffffff;
   border: none;
+  outline: none;
   border-radius: var(--radius-md);
   font-size: 0.94rem;
   font-weight: 700;
@@ -305,6 +306,14 @@
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45);
   transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.welcome-btn-primary:focus,
+.welcome-btn-primary:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5) !important;
 }
 
 .welcome-btn-primary:hover {
@@ -329,6 +338,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -339,6 +349,7 @@
     opacity: 0;
     transform: scale(0.88) translate3d(0, 20px, 0);
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translate3d(0, 0, 0);
@@ -352,18 +363,21 @@
     transform: translate3d(0, 0, 0) scale(1);
     animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   }
+
   18% {
     opacity: 1;
     /* Smooth physical spring cushion dip */
     transform: translate3d(0, 16px, 0) scale(0.985);
     animation-timing-function: cubic-bezier(0.33, 0.8, 0.4, 1);
   }
+
   36% {
     opacity: 0.98;
     /* Buoyant rebound through starting elevation */
     transform: translate3d(0, -8px, 0) scale(1.01);
     animation-timing-function: cubic-bezier(0.4, 0, 0.1, 1);
   }
+
   100% {
     opacity: 0;
     /* High-velocity seamless rocket departure off-screen */
@@ -372,9 +386,12 @@
 }
 
 @keyframes welcomeFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
@@ -385,6 +402,7 @@
     transform: scale(0.8);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(1.45);
     opacity: 0;
@@ -395,6 +413,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
