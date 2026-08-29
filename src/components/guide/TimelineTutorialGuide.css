@@ -98,6 +98,27 @@
   color: #d8b4fe;
 }
 
+/* Method Notice Callout */
+.tutorial-method-notice {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  border-radius: var(--radius-sm);
+  font-size: 0.71rem;
+  font-weight: 500;
+  color: #c7d2fe;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.notice-icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
 /* Steps List */
 .tutorial-steps-list {
   display: flex;

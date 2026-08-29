@@ -9,7 +9,8 @@ import {
   ChevronDown,
   ChevronUp,
   FolderArchive,
-  Share2
+  Share2,
+  Info
 } from 'lucide-react';
 import { ALL_SAMPLES, type SampleJourney } from '../../data/sample';
 import './TimelineTutorialGuide.css';
@@ -59,6 +60,11 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
           <div className="tutorial-badge mobile-badge">
             <Smartphone size={12} />
             <span>On-Device Mobile Export (Android & iOS)</span>
+          </div>
+
+          <div className="tutorial-method-notice">
+            <Info size={13} className="notice-icon" />
+            <span>Only use this method if you have Google Timeline enabled in your app.</span>
           </div>
 
           <div className="tutorial-steps-list">
