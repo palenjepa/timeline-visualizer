@@ -20,8 +20,8 @@ export const MAP_THEMES: Record<string, MapTheme> = {
     id: 'osm',
     name: 'Street',
     icon: '🧭',
-    url: 'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap',
+    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     trackColors: {
       neonGlow: 'rgba(220, 38, 38, 0.35)',
       laserGlow: '#dc2626',
@@ -32,8 +32,9 @@ export const MAP_THEMES: Record<string, MapTheme> = {
     id: 'dark',
     name: 'Midnight',
     icon: '🌙',
-    url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    referenceUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+    attribution: '&copy; Esri, HERE, Garmin, OpenStreetMap contributors',
     trackColors: {
       neonGlow: 'rgba(99, 102, 241, 0.4)',
       laserGlow: '#818cf8',
