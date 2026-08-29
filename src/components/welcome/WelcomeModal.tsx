@@ -14,7 +14,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
     setIsClosing(true);
     setTimeout(() => {
       onDismiss();
-    }, 750); // match 0.75s organic spring bounce & slide-up duration
+    }, 650); // match 0.65s GPU-accelerated spring bounce & rocket exit
   };
 
   useEffect(() => {
