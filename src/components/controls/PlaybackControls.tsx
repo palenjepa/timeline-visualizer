@@ -25,7 +25,7 @@ const SPEED_OPTIONS = [0.5, 1, 2, 5, 10];
 const ZOOM_PRESETS = [9, 11, 13, 15];
 
 function formatDuration(ms: number | undefined): string {
-  if (!ms || isNaN(ms) || ms <= 0) return 'Instant / Single Point';
+  if (!ms || isNaN(ms) || ms <= 0) return 'Seketika / Titik Tunggal';
   const seconds = Math.floor(ms / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
@@ -33,35 +33,50 @@ function formatDuration(ms: number | undefined): string {
 
   if (days > 365) {
     const years = (days / 365.25).toFixed(1);
-    return `${years} yrs (${days} days)`;
+    return `${years} thn (${days} hari)`;
   }
   if (days > 30) {
     const months = Math.floor(days / 30);
     const remDays = days % 30;
-    return `${months}mo ${remDays}d`;
+    return `${months} bln ${remDays} hr`;
   }
   if (days > 0) {
     const remHours = hours % 24;
-    return `${days}d ${remHours}h`;
+    return `${days} hr ${remHours} jam`;
   }
   if (hours > 0) {
     const remMins = minutes % 60;
-    return `${hours}h ${remMins}m`;
+    return `${hours} jam ${remMins} mnt`;
   }
-  return `${minutes} mins`;
+  return `${minutes} menit`;
 }
 
 function formatDate(isoString: string | undefined): string {
-  if (!isoString) return 'Unknown';
+  if (!isoString) return 'Tidak Diketahui';
   const d = new Date(isoString);
-  if (isNaN(d.getTime())) return 'Unknown';
-  return d.toLocaleString(undefined, {
+  if (isNaN(d.getTime())) return 'Tidak Diketahui';
+  return d.toLocaleString('id-ID', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit'
   });
+}
+
+function getStatusLabel(status: AnimationStatus): string {
+  switch (status) {
+    case 'playing':
+      return 'MEMUTAR';
+    case 'paused':
+      return 'JEDA';
+    case 'completed':
+      return 'SELESAI';
+    case 'ready':
+    case 'idle':
+    default:
+      return 'SIAP';
+  }
 }
 
 export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
@@ -91,15 +106,15 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div className={`status-badge ${status}`}>
           <span className="status-dot" />
-          {status}
+          {getStatusLabel(status)}
         </div>
         <button
           className="btn-control"
           onClick={onReset}
           style={{ padding: '4px 8px', fontSize: '0.75rem' }}
-          title="Clear / Load another file"
+          title="Hapus / Muat berkas lain"
         >
-          Change File
+          Ganti Berkas
         </button>
       </div>
 
@@ -109,7 +124,7 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
           <div className="date-range-header">
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <Calendar size={12} style={{ color: 'var(--accent-primary)' }} />
-              Timeline History Range
+              Rentang Riwayat Linimasa
             </span>
             <span style={{ color: 'var(--accent-secondary)' }}>
               {formatDuration(journey.durationMs)}
@@ -117,11 +132,11 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
           </div>
           <div className="date-range-dates">
             <div className="date-item">
-              <span className="date-tag oldest">Oldest</span>
+              <span className="date-tag oldest">Awal</span>
               <span style={{ fontWeight: 500 }}>{formatDate(journey.startTime)}</span>
             </div>
             <div className="date-item">
-              <span className="date-tag newest">Newest</span>
+              <span className="date-tag newest">Akhir</span>
               <span style={{ fontWeight: 500 }}>{formatDate(journey.endTime)}</span>
             </div>
           </div>
@@ -131,11 +146,11 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
       {/* Statistics */}
       <div className="stats-grid">
         <div className="stat-box">
-          <span className="stat-label">GPS Points</span>
-          <span className="stat-value">{journey.points.length.toLocaleString()}</span>
+          <span className="stat-label">Titik GPS</span>
+          <span className="stat-value">{journey.points.length.toLocaleString('id-ID')}</span>
         </div>
         <div className="stat-box">
-          <span className="stat-label">Distance</span>
+          <span className="stat-label">Jarak</span>
           <span className="stat-value">
             {traveledKm} <span style={{ fontSize: '0.85rem', fontWeight: 'normal', color: 'var(--text-secondary)' }}>/ {totalKm} km</span>
           </span>
@@ -145,7 +160,7 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
       {/* Progress Slider */}
       <div className="progress-section">
         <div className="progress-header">
-          <span>Timeline Progress</span>
+          <span>Progres Linimasa</span>
           <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{percentage}%</span>
         </div>
         <div className="progress-slider-container">
@@ -166,9 +181,9 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
         <div className="action-buttons">
           <button className="btn-control primary" onClick={onTogglePlay}>
             {status === 'playing' ? <Pause size={16} /> : <Play size={16} />}
-            {status === 'playing' ? 'Pause' : 'Play'}
+            {status === 'playing' ? 'Jeda' : 'Putar'}
           </button>
-          <button className="btn-control" onClick={onRestart} title="Restart from Oldest Date">
+          <button className="btn-control" onClick={onRestart} title="Mulai ulang dari titik awal">
             <RotateCcw size={16} />
           </button>
         </div>
@@ -188,16 +203,16 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
 
       {/* Base Zoom & Camera Toggle enclosed inside unified card */}
       <div className="zoom-controls-box">
-        <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Base Zoom</span>
+        <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Zoom Dasar</span>
         <div className="zoom-btn-group">
           {onFitClick && (
             <button
               className={`zoom-btn ${activeZoomPreset === 'fit' ? 'active' : ''}`}
               onClick={onFitClick}
-              title="Fit whole route to screen"
+              title="Sesuaikan seluruh rute ke layar"
             >
               <Maximize2 size={11} style={{ display: 'inline', marginRight: '2px' }} />
-              Fit
+              Pas
             </button>
           )}
           {ZOOM_PRESETS.map((z) => (
@@ -225,7 +240,7 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
           }}
         >
           {followCamera ? <Eye size={15} style={{ color: 'var(--accent-primary)' }} /> : <EyeOff size={15} />}
-          <span>{followCamera ? 'Camera: Following Marker' : 'Camera: Overview / Free Pan'}</span>
+          <span>{followCamera ? 'Kamera: Mengikuti Marker' : 'Kamera: Bebas Digeser (Klik untuk Mengikuti)'}</span>
         </button>
       )}
     </div>

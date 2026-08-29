@@ -34,7 +34,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
       <div className={`welcome-card ${isClosing ? 'animate-welcome-lift-exit' : 'animate-welcome-entrance'}`}>
         {/* Watermark Branding */}
         <div className="welcome-watermark">
-          <span>by : zevitsoft</span>
+          <span>oleh : zevitsoft</span>
         </div>
 
         {/* Ambient neon radial glow */}
@@ -81,13 +81,13 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
         <div className="welcome-header">
           <div className="welcome-badge">
             <Sparkles size={13} className="welcome-badge-icon" />
-            <span>Google Maps Timeline & GPS Visualizer</span>
+            <span>Visualisasi Linimasa Google Maps & GPS</span>
           </div>
           <h2 className="welcome-title text-gradient">
-            Welcome to Timeline Visualizer
+            Selamat Datang di Visualisator Linimasa
           </h2>
           <p className="welcome-desc">
-            Transform your raw Google Maps Timeline, Takeout exports, and GPS location history into smooth, cinematic 60 FPS journey replays.
+            Ubah data riwayat lokasi Google Maps Timeline, ekspor Takeout, dan catatan GPS mentah Anda menjadi animasi perjalanan 60 FPS yang mulus dan sinematik.
           </p>
         </div>
 
@@ -98,8 +98,8 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
               <MapPin size={16} />
             </div>
             <div className="welcome-feature-text">
-              <span className="welcome-feature-title">Cinematic Replays</span>
-              <span className="welcome-feature-sub">Speed control & camera tracking</span>
+              <span className="welcome-feature-title">Pemutaran Sinematik</span>
+              <span className="welcome-feature-sub">Kontrol kecepatan & pelacakan kamera</span>
             </div>
           </div>
           <div className="welcome-feature-item">
@@ -107,8 +107,8 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
               <ShieldCheck size={16} />
             </div>
             <div className="welcome-feature-text">
-              <span className="welcome-feature-title">100% Client-Side</span>
-              <span className="welcome-feature-sub">Location data never leaves browser</span>
+              <span className="welcome-feature-title">100% Sisi Klien</span>
+              <span className="welcome-feature-sub">Data lokasi tidak pernah keluar peramban</span>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
         {/* Action Button */}
         <div className="welcome-actions">
           <button className="welcome-btn-primary" onClick={handleClose}>
-            <span>Get Started</span>
+            <span>Mulai Sekarang</span>
             <ArrowRight size={18} className="welcome-btn-arrow" />
           </button>
         </div>

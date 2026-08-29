@@ -249,14 +249,14 @@ export function parseTimelineData(data: any): ParseResult {
     else {
       return { 
         success: false, 
-        error: 'No supported Timeline structure was detected.\n\nMake sure the file contains valid Google Location History or GPS coordinates.' 
+        error: 'Tidak ada struktur Linimasa yang didukung yang terdeteksi.\n\nPastikan berkas berisi data Histori Lokasi Google atau koordinat GPS yang valid.' 
       };
     }
 
     if (points.length === 0) {
       return {
         success: false,
-        error: `Detected ${sourceFormat} format, but found 0 valid coordinates.\n\nThis usually occurs if Location History / Timeline was turned off or paused on your device during the exported date range.`
+        error: `Format ${sourceFormat} terdeteksi, namun tidak ditemukan koordinat yang valid.\n\nHal ini biasanya terjadi jika Histori Lokasi / Linimasa dimatikan atau dijeda pada perangkat Anda selama rentang tanggal yang diekspor.`
       };
     }
 
@@ -310,7 +310,7 @@ export function parseTimelineData(data: any): ParseResult {
     console.error('Parsing error:', err);
     return {
       success: false,
-      error: 'An error occurred while parsing the file structure.'
+      error: 'Terjadi kesalahan saat memproses struktur berkas.'
     };
   }
 }

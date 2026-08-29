@@ -16,7 +16,7 @@ export function FileDropzone({ onDataLoaded, isLoading = false }: FileDropzonePr
     setError(null);
     
     if (!file.name.endsWith('.json') && file.type !== 'application/json') {
-      setError('Please upload a valid JSON file.');
+      setError('Harap unggah berkas JSON yang valid.');
       return;
     }
 
@@ -29,12 +29,12 @@ export function FileDropzone({ onDataLoaded, isLoading = false }: FileDropzonePr
         onDataLoaded(json);
       } catch (err) {
         console.error('JSON Parse Error:', err);
-        setError('Unable to read this file.\n\nThe selected JSON is malformed or corrupted.');
+        setError('Tidak dapat membaca berkas ini.\n\nBerkas JSON yang dipilih rusak atau memiliki format yang salah.');
       }
     };
 
     reader.onerror = () => {
-      setError('Failed to read the file.');
+      setError('Gagal membaca berkas.');
     };
 
     reader.readAsText(file);
@@ -82,10 +82,10 @@ export function FileDropzone({ onDataLoaded, isLoading = false }: FileDropzonePr
       >
         <UploadCloud size={32} className="dropzone-icon" />
         <div className="dropzone-text">
-          {isLoading ? 'Processing...' : 'Click or drag Timeline JSON here'}
+          {isLoading ? 'Memproses...' : 'Klik atau seret berkas JSON Linimasa ke sini'}
         </div>
         <div className="dropzone-subtext">
-          Processes locally. Your data never leaves your browser.
+          Diproses secara lokal. Data Anda tidak pernah keluar dari peramban.
         </div>
         <input 
           type="file" 

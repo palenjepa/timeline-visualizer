@@ -226,12 +226,12 @@ function App() {
               className="header-title-group"
               onClick={isMinimized ? () => setIsMinimized(false) : undefined}
               style={{ cursor: isMinimized ? 'pointer' : 'default' }}
-              title={isMinimized ? "Click to expand" : undefined}
+              title={isMinimized ? "Klik untuk memperluas" : undefined}
             >
               <Compass className="text-gradient" size={24} style={{ color: 'var(--accent-primary)', flexShrink: 0 }} />
               <div className="header-text">
-                <h1 className="text-gradient">Timeline Visualizer</h1>
-                {!isMinimized && <p>Google Maps Timeline & GPS Journey Animator</p>}
+                <h1 className="text-gradient">Visualisator Linimasa</h1>
+                {!isMinimized && <p>Linimasa Google Maps & Animator Perjalanan GPS</p>}
               </div>
             </div>
 
@@ -240,7 +240,7 @@ function App() {
                 <div 
                   className="minimized-pill-status" 
                   onClick={() => setIsMinimized(false)}
-                  title="Click to expand"
+                  title="Klik untuk memperluas"
                 >
                   <span className="mini-dot" />
                   <span>{(animator.progress * 100).toFixed(0)}%</span>
@@ -249,8 +249,8 @@ function App() {
               <button
                 className="sidebar-action-btn"
                 onClick={() => setIsMinimized(!isMinimized)}
-                title={isMinimized ? "Expand Timeline Box" : "Minimize Timeline Box"}
-                aria-label={isMinimized ? "Expand Timeline Box" : "Minimize Timeline Box"}
+                title={isMinimized ? "Perluas Panel Linimasa" : "Ciutkan Panel Linimasa"}
+                aria-label={isMinimized ? "Perluas Panel Linimasa" : "Ciutkan Panel Linimasa"}
               >
                 {isMinimized ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
               </button>
@@ -279,7 +279,7 @@ function App() {
                 <div className="privacy-badge">
                   <ShieldCheck size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong>100% Client-Side & Private:</strong> Your location JSON is processed entirely inside your browser. No coordinates or logs are ever uploaded to any server.
+                    <strong>100% Sisi Klien & Privasi Terjaga:</strong> Berkas JSON lokasi Anda diproses sepenuhnya di dalam peramban. Koordinat atau log data tidak pernah diunggah ke server mana pun.
                   </div>
                 </div>
               </div>
@@ -316,21 +316,21 @@ function App() {
               onPointerDown={(e) => startResizing('width', e)}
               onMouseDown={(e) => startResizing('width', e)}
               onDoubleClick={handleResetDimensions}
-              title="Drag sideways to resize width (Double-click to reset)"
+              title="Tarik ke samping untuk mengubah lebar (Klik dua kali untuk mereset)"
             />
             <div 
               className="sidebar-resize-edge-b"
               onPointerDown={(e) => startResizing('height', e)}
               onMouseDown={(e) => startResizing('height', e)}
               onDoubleClick={handleResetDimensions}
-              title="Drag up/down to resize height (Double-click to reset)"
+              title="Tarik ke atas/bawah untuk mengubah tinggi (Klik dua kali untuk mereset)"
             />
             <div 
               className="sidebar-resize-handle"
               onPointerDown={(e) => startResizing('both', e)}
               onMouseDown={(e) => startResizing('both', e)}
               onDoubleClick={handleResetDimensions}
-              title="Drag corner to resize sideways & up/down (Double-click to reset)"
+              title="Tarik sudut untuk mengubah ukuran bebas (Klik dua kali untuk mereset)"
             >
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.5 1.5L1.5 8.5M8.5 5L5 8.5M8.5 8.51" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />

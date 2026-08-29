@@ -29,9 +29,9 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
       <div className="tutorial-header">
         <div className="tutorial-title-row">
           <HelpCircle size={15} className="tutorial-header-icon" />
-          <span className="tutorial-title">How to Export Your Timeline Data</span>
+          <span className="tutorial-title">Cara Mengekspor Data Linimasa Anda</span>
         </div>
-        <span className="tutorial-subtitle">Choose your preferred export method below:</span>
+        <span className="tutorial-subtitle">Pilih metode ekspor yang Anda inginkan di bawah ini:</span>
       </div>
 
       {/* Segmented Method Switcher */}
@@ -42,7 +42,7 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
           type="button"
         >
           <Smartphone size={14} />
-          <span>Google Maps App</span>
+          <span>Aplikasi Google Maps</span>
         </button>
         <button
           className={`tutorial-tab-btn ${activeTab === 'takeout' ? 'active' : ''}`}
@@ -59,21 +59,21 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
         <div className="tutorial-method-content animate-fade-in">
           <div className="tutorial-badge mobile-badge">
             <Smartphone size={12} />
-            <span>On-Device Mobile Export (Android & iOS)</span>
+            <span>Ekspor Langsung dari Ponsel (Android & iOS)</span>
           </div>
 
           <div className="tutorial-method-notice">
             <Info size={13} className="notice-icon" />
-            <span>Only use this method if you have Google Timeline enabled in your app.</span>
+            <span>Gunakan metode ini hanya jika fitur Google Linimasa telah diaktifkan di aplikasi Anda.</span>
           </div>
 
           <div className="tutorial-steps-list">
             <div className="tutorial-step-card">
               <div className="step-number-badge">01</div>
               <div className="step-body">
-                <span className="step-title">Open Google Maps</span>
+                <span className="step-title">Buka Google Maps</span>
                 <span className="step-desc">
-                  Launch the <strong>Google Maps</strong> app on your smartphone or tablet.
+                  Buka aplikasi <strong>Google Maps</strong> di ponsel cerdas atau tablet Anda.
                 </span>
               </div>
             </div>
@@ -81,9 +81,9 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
             <div className="tutorial-step-card">
               <div className="step-number-badge">02</div>
               <div className="step-body">
-                <span className="step-title">Navigate to Your Timeline</span>
+                <span className="step-title">Buka Linimasa Anda</span>
                 <span className="step-desc">
-                  Tap your <strong>Profile Picture</strong> at the top right, then select <strong>Your Timeline</strong>.
+                  Ketuk <strong>Foto Profil</strong> di pojok kanan atas, lalu pilih <strong>Linimasa Anda</strong>.
                 </span>
               </div>
             </div>
@@ -91,9 +91,9 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
             <div className="tutorial-step-card">
               <div className="step-number-badge">03</div>
               <div className="step-body">
-                <span className="step-title">Open Settings & Privacy</span>
+                <span className="step-title">Buka Setelan & Privasi</span>
                 <span className="step-desc">
-                  Tap the <strong>••• (Three Dots)</strong> menu icon in the top right → tap <strong>Settings and privacy</strong>.
+                  Ketuk ikon menu <strong>••• (Tiga Titik)</strong> di pojok kanan atas → pilih <strong>Setelan dan privasi</strong>.
                 </span>
               </div>
             </div>
@@ -101,9 +101,9 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
             <div className="tutorial-step-card">
               <div className="step-number-badge">04</div>
               <div className="step-body">
-                <span className="step-title">Export Timeline JSON</span>
+                <span className="step-title">Ekspor Berkas JSON Linimasa</span>
                 <span className="step-desc">
-                  Scroll down to <strong>"Export Timeline data"</strong> → tap <strong>Export</strong> to save or share your <code>.json</code> file to this computer.
+                  Gulir ke bawah ke menu <strong>"Ekspor data Linimasa"</strong> → ketuk <strong>Ekspor</strong> untuk menyimpan atau membagikan berkas <code>.json</code> ke komputer ini.
                 </span>
               </div>
             </div>
@@ -112,7 +112,7 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
           <div className="tutorial-tip-box">
             <Share2 size={14} className="tip-icon" />
             <span>
-              <strong>Quick Transfer Tip:</strong> AirDrop, email, or save the exported JSON to Google Drive/iCloud, then drag it directly into the box above!
+              <strong>Tips Transfer Cepat:</strong> Gunakan AirDrop, email, Google Drive, atau kirim berkas JSON ke komputer ini, lalu seret langsung ke kotak unggah di atas!
             </span>
           </div>
         </div>
@@ -123,16 +123,16 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
         <div className="tutorial-method-content animate-fade-in">
           <div className="tutorial-badge takeout-badge">
             <CloudDownload size={12} />
-            <span>Cloud Archive Export (Desktop Web)</span>
+            <span>Ekspor Arsip Cloud (Web / Komputer)</span>
           </div>
 
           <div className="tutorial-steps-list">
             <div className="tutorial-step-card">
               <div className="step-number-badge">01</div>
               <div className="step-body">
-                <span className="step-title">Go to Google Takeout</span>
+                <span className="step-title">Kunjungi Google Takeout</span>
                 <span className="step-desc">
-                  Open Google's official data archive export page in your browser.
+                  Buka halaman resmi ekspor arsip data Google di peramban Anda.
                 </span>
                 <a 
                   href="https://takeout.google.com" 
@@ -140,7 +140,7 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
                   rel="noopener noreferrer"
                   className="takeout-link-btn"
                 >
-                  <span>Open takeout.google.com</span>
+                  <span>Buka takeout.google.com</span>
                   <ExternalLink size={12} />
                 </a>
               </div>
@@ -149,9 +149,9 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
             <div className="tutorial-step-card">
               <div className="step-number-badge">02</div>
               <div className="step-body">
-                <span className="step-title">Select Location History</span>
+                <span className="step-title">Pilih Riwayat Lokasi</span>
                 <span className="step-desc">
-                  Click <strong>"Deselect all"</strong>, then scroll down and check only <strong>"Location History (Timeline)"</strong>.
+                  Klik <strong>"Batalkan pilihan semua"</strong>, lalu gulir ke bawah dan centang hanya <strong>"Histori Lokasi (Linimasa)"</strong>.
                 </span>
               </div>
             </div>
@@ -159,9 +159,9 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
             <div className="tutorial-step-card">
               <div className="step-number-badge">03</div>
               <div className="step-body">
-                <span className="step-title">Create Single Export</span>
+                <span className="step-title">Buat Ekspor Sekali</span>
                 <span className="step-desc">
-                  Scroll to the bottom, click <strong>"Next step"</strong> → choose <strong>"Export once"</strong> (.zip format).
+                  Gulir ke bagian bawah, klik <strong>"Langkah berikutnya"</strong> → pilih <strong>"Ekspor sekali"</strong> (format .zip).
                 </span>
               </div>
             </div>
@@ -169,9 +169,9 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
             <div className="tutorial-step-card">
               <div className="step-number-badge">04</div>
               <div className="step-body">
-                <span className="step-title">Extract & Drop Records.json</span>
+                <span className="step-title">Ekstrak & Seret Records.json</span>
                 <span className="step-desc">
-                  Download the archive, extract the <code>.zip</code>, and drag <code>Records.json</code> or any monthly JSON file from <code>Semantic Location History</code> into the box above.
+                  Unduh arsip, ekstrak berkas <code>.zip</code>, lalu seret berkas <code>Records.json</code> atau berkas JSON bulanan dari folder <code>Semantic Location History</code> ke dalam kotak di atas.
                 </span>
               </div>
             </div>
@@ -180,7 +180,7 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
           <div className="tutorial-tip-box">
             <FolderArchive size={14} className="tip-icon" />
             <span>
-              <strong>Supported Formats:</strong> Works with both modern Takeout format (<code>Records.json</code>) and Semantic Location History month/year files.
+              <strong>Format yang Didukung:</strong> Mendukung format Takeout terbaru (<code>Records.json</code>) maupun berkas riwayat bulanan dari folder Semantic Location History.
             </span>
           </div>
         </div>
@@ -196,7 +196,7 @@ export const TimelineTutorialGuide: React.FC<TimelineTutorialGuideProps> = ({ on
           >
             <div className="toggle-label-group">
               <Sparkles size={13} className="sparkle-icon" />
-              <span>Or try with preloaded demo routes</span>
+              <span>Atau coba dengan rute demo siap pakai</span>
             </div>
             {showSamples ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
           </button>

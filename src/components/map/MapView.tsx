@@ -240,7 +240,7 @@ export function MapView({
             <button
               className="map-action-btn"
               onClick={onFitClick}
-              title="Fit entire route to screen"
+              title="Sesuaikan seluruh rute ke layar"
             >
               <Maximize2 size={16} />
             </button>
@@ -248,7 +248,7 @@ export function MapView({
           <button
             className="map-action-btn"
             onClick={toggleFullscreen}
-            title="Toggle Fullscreen"
+            title="Layar Penuh"
           >
             ⛶
           </button>

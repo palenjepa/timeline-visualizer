@@ -92,7 +92,7 @@ describe('Timeline Parser', () => {
     const rawData = { someRandomProperty: 'hello world' };
     const result = parseTimelineData(rawData);
     expect(result.success).toBe(false);
-    expect(result.error).toContain('No supported Timeline structure');
+    expect(result.error).toContain('Tidak ada struktur Linimasa yang didukung');
   });
 
   it('handles empty input gracefully', () => {

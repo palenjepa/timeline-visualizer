@@ -14,9 +14,9 @@ function formatFullDate(isoString: string | undefined) {
   const d = new Date(isoString);
   if (isNaN(d.getTime())) return null;
 
-  const weekday = d.toLocaleDateString(undefined, { weekday: 'short' });
-  const day = d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
-  const time = d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const weekday = d.toLocaleDateString('id-ID', { weekday: 'long' });
+  const day = d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+  const time = d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
   return { weekday, day, time };
 }
@@ -41,7 +41,7 @@ export const TopDateHUD: React.FC<TopDateHUDProps> = ({
 
         <div className="hud-content">
           <div className="hud-title-row">
-            <span className="hud-label">CURRENT POSITION DATE</span>
+            <span className="hud-label">TANGGAL & WAKTU POSISI SAAT INI</span>
           </div>
           <div className="hud-date-row">
             <span className="hud-date">{dateInfo.weekday}, {dateInfo.day}</span>
@@ -49,7 +49,7 @@ export const TopDateHUD: React.FC<TopDateHUDProps> = ({
           </div>
         </div>
 
-        <div className="hud-progress-tag" title="Timeline Progress">
+        <div className="hud-progress-tag" title="Progres Linimasa">
           <span className={`hud-progress-dot ${status === 'playing' ? 'active' : ''}`} />
           <span>{percentage}%</span>
         </div>

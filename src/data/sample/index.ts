@@ -28,7 +28,7 @@ function createSyntheticJourney(
 
   return {
     title,
-    description: `${(totalDistanceMeters / 1000).toFixed(1)} km · ${points.length} GPS waypoints`,
+    description: `${(totalDistanceMeters / 1000).toFixed(1)} km · ${points.length} titik GPS`,
     points,
     totalDistanceMeters,
     startTime,
@@ -39,7 +39,7 @@ function createSyntheticJourney(
 
 // 1. Pacific Coast Scenic Highway (SF to Monterey Bay along California Highway 1 / Cabrillo Highway)
 export const samplePacificCoast = createSyntheticJourney(
-  'Pacific Coast Highway',
+  'Jalan Raya Pesisir Pasifik',
   [
     [37.7935, -122.3965], // SF Ferry Building / Market St
     [37.7750, -122.4190], // Market St & Van Ness Ave
@@ -104,7 +104,7 @@ export const samplePacificCoast = createSyntheticJourney(
 
 // 2. Tokyo Urban Discovery (Shibuya -> Shinjuku -> Imperial Palace -> Asakusa)
 export const sampleTokyoDiscovery = createSyntheticJourney(
-  'Tokyo City Tour',
+  'Tur Kota Tokyo',
   [
     [35.6595, 139.7005], // Shibuya Crossing & Hachiko
     [35.6653, 139.7040], // Miyashita Park
@@ -131,7 +131,7 @@ export const sampleTokyoDiscovery = createSyntheticJourney(
 
 // 3. Alpine Mountain Pass (Interlaken -> Brienz -> Meiringen -> Grimsel Pass -> Brig -> Visp -> Täsch -> Zermatt)
 export const sampleAlpinePass = createSyntheticJourney(
-  'Swiss Alps Mountain Pass',
+  'Lintas Pegunungan Alpen Swiss',
   [
     [46.6863, 7.8632], // Interlaken
     [46.6850, 7.8950], // Bönigen
@@ -164,7 +164,7 @@ export const sampleAlpinePass = createSyntheticJourney(
 
 // 4. Trans-Continental Cross-Country (New York to Los Angeles — 4,500+ km)
 export const sampleCrossCountry = createSyntheticJourney(
-  'Trans-Continental Route',
+  'Rute Lintas Benua Amerika',
   [
     [40.7128, -74.0060], // New York, NY (Times Square)
     [40.7357, -74.1724], // Newark, NJ
