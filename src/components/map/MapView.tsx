@@ -256,8 +256,8 @@ export function MapView({
       </div>
 
       <MapContainer 
-        center={[20, 0]} 
-        zoom={3} 
+        center={[-7.5, 110.0]} 
+        zoom={6} 
         minZoom={2}
         maxBounds={[[-90, -180], [90, 180]]}
         maxBoundsViscosity={1.0}
