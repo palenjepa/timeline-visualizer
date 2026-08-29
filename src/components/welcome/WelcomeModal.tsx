@@ -32,6 +32,11 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
       <div className="welcome-backdrop" onClick={handleClose} />
       
       <div className={`welcome-card ${isClosing ? 'animate-welcome-lift-exit' : 'animate-welcome-entrance'}`}>
+        {/* Watermark Branding */}
+        <div className="welcome-watermark">
+          <span>by : zevitsoft</span>
+        </div>
+
         {/* Ambient neon radial glow */}
         <div className="welcome-glow-ambient" />
 
@@ -55,9 +60,6 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
                   <stop offset="50%" stopColor="#8b5cf6" />
                   <stop offset="100%" stopColor="#ec4899" />
                 </linearGradient>
-                <filter id="welcome-pin-glow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#6366f1" floodOpacity="0.75" />
-                </filter>
               </defs>
               <path 
                 d="M16 1C8.268 1 2 7.268 2 15C2 24.5 14.2 36.8 15.3 37.9C15.7 38.3 16.3 38.3 16.7 37.9C17.8 36.8 30 24.5 30 15C30 7.268 23.732 1 16 1Z" 
@@ -65,7 +67,6 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
                 stroke="#ffffff" 
                 strokeWidth="1.8" 
                 strokeLinejoin="round"
-                filter="url(#welcome-pin-glow)"
               />
               <circle cx="16" cy="14" r="5.5" fill="#ffffff" />
               <circle cx="16" cy="14" r="3" fill="#6366f1" />

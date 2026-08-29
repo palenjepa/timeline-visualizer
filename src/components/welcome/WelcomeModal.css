@@ -59,6 +59,35 @@
   will-change: transform, opacity;
 }
 
+/* Watermark Branding in Top Right Corner */
+.welcome-watermark {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  user-select: none;
+  z-index: 10;
+  transition: all var(--transition-fast);
+}
+
+.welcome-watermark:hover {
+  color: #c7d2fe;
+  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.1);
+}
+
 /* Smooth Entrance Scale Animation */
 .animate-welcome-entrance {
   animation: welcomeCardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
