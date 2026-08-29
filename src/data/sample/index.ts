@@ -1,12 +1,14 @@
 import type { Journey, GPSPoint } from '../../types';
 import { calculateTotalDistance } from '../../features/timeline/distance';
 
+export type SampleJourney = Journey & { title: string; description: string };
+
 function createSyntheticJourney(
   title: string,
   rawCoords: [number, number][],
   startTimeStr: string,
   stepMinutes: number
-): Journey & { title: string; description: string } {
+): SampleJourney {
   const startDate = new Date(startTimeStr);
   
   const points: GPSPoint[] = rawCoords.map(([lat, lng], i) => {

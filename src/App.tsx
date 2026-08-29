@@ -2,8 +2,6 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { 
   ShieldCheck, 
   Compass, 
-  Sparkles, 
-  MapPin, 
   AlertCircle,
   ChevronUp,
   ChevronDown,
@@ -14,10 +12,10 @@ import { MapView } from './components/map/MapView';
 import { PlaybackControls } from './components/controls/PlaybackControls';
 import { TopDateHUD } from './components/hud/TopDateHUD';
 import { WelcomeModal } from './components/welcome/WelcomeModal';
+import { TimelineTutorialGuide } from './components/guide/TimelineTutorialGuide';
 import { parseTimelineData } from './features/timeline/parser';
 import { useJourneyAnimator } from './features/timeline/animator';
 import type { Journey } from './types';
-import { ALL_SAMPLES } from './data/sample';
 import './App.css';
 
 function App() {
@@ -274,34 +272,8 @@ function App() {
                 {/* Drag & Drop Area */}
                 <FileDropzone onDataLoaded={handleDataLoaded} />
                 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <hr style={{ flex: 1, borderColor: 'var(--border-color)' }} />
-                  <span style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>OR EXPLORE SAMPLES</span>
-                  <hr style={{ flex: 1, borderColor: 'var(--border-color)' }} />
-                </div>
-
-                {/* Curated Sample Journeys */}
-                <div className="samples-section">
-                  <span className="section-label">
-                    <Sparkles size={12} style={{ display: 'inline', marginRight: '4px', color: 'var(--accent-secondary)' }} />
-                    Preloaded Demo Routes
-                  </span>
-                  <div className="sample-cards-list">
-                    {ALL_SAMPLES.map((sample, idx) => (
-                      <button
-                        key={idx}
-                        className="sample-card"
-                        onClick={() => handleSelectSample(sample)}
-                      >
-                        <div className="sample-card-info">
-                          <span className="sample-card-title">{sample.title}</span>
-                          <span className="sample-card-desc">{sample.description}</span>
-                        </div>
-                        <MapPin size={16} style={{ color: 'var(--accent-primary)', flexShrink: 0 }} />
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                {/* Interactive Location History Export Tutorial Guide */}
+                <TimelineTutorialGuide onSelectSample={handleSelectSample} />
 
                 {/* Privacy Assurance Card */}
                 <div className="privacy-badge">
