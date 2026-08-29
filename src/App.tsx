@@ -230,8 +230,8 @@ function App() {
             >
               <Compass className="text-gradient" size={24} style={{ color: 'var(--accent-primary)', flexShrink: 0 }} />
               <div className="header-text">
-                <h1 className="text-gradient">Visualisator Linimasa</h1>
-                {!isMinimized && <p>Linimasa Google Maps & Animator Perjalanan GPS</p>}
+                <h1 className="text-gradient">Timeline Visualizer</h1>
+                {!isMinimized && <p>Google Maps Timeline & GPS Journey Animator</p>}
               </div>
             </div>
 

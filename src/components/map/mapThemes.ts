@@ -18,7 +18,7 @@ export interface MapTheme {
 export const MAP_THEMES: Record<string, MapTheme> = {
   osm: {
     id: 'osm',
-    name: 'Jalanan',
+    name: 'Street',
     icon: '🧭',
     url: 'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png',
     attribution: '&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap',
@@ -42,7 +42,7 @@ export const MAP_THEMES: Record<string, MapTheme> = {
   },
   satellite: {
     id: 'satellite',
-    name: 'Satelit',
+    name: 'Satellite',
     icon: '🛰️',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     referenceUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
@@ -55,7 +55,7 @@ export const MAP_THEMES: Record<string, MapTheme> = {
   },
   terrain: {
     id: 'terrain',
-    name: 'Topografi',
+    name: 'Terrain',
     icon: '🌍',
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
     attribution: '&copy; Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom',

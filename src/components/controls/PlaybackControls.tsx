@@ -33,7 +33,7 @@ function formatDuration(ms: number | undefined): string {
 
   if (days > 365) {
     const years = (days / 365.25).toFixed(1);
-    return `${years} thn (${days} hari)`;
+    return `${years} thn (${days} hr)`;
   }
   if (days > 30) {
     const months = Math.floor(days / 30);
@@ -122,11 +122,11 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
       {hasDateRange && (
         <div className="date-range-box">
           <div className="date-range-header">
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Calendar size={12} style={{ color: 'var(--accent-primary)' }} />
-              Rentang Riwayat Linimasa
+            <span className="date-range-title">
+              <Calendar size={12} style={{ color: 'var(--accent-primary)', flexShrink: 0 }} />
+              Rentang Waktu
             </span>
-            <span style={{ color: 'var(--accent-secondary)' }}>
+            <span className="date-range-duration">
               {formatDuration(journey.durationMs)}
             </span>
           </div>

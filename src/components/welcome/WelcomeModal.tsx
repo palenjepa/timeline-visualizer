@@ -30,11 +30,11 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
   return (
     <div className={`welcome-overlay ${isClosing ? 'closing' : ''}`}>
       <div className="welcome-backdrop" onClick={handleClose} />
-      
+
       <div className={`welcome-card ${isClosing ? 'animate-welcome-lift-exit' : 'animate-welcome-entrance'}`}>
         {/* Watermark Branding */}
         <div className="welcome-watermark">
-          <span>oleh : zevitsoft</span>
+          <span>by : zevitsoft</span>
         </div>
 
         {/* Ambient neon radial glow */}
@@ -44,14 +44,14 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
         <div className="welcome-logo-container">
           <div className="welcome-pulse-ring ring-1" />
           <div className="welcome-pulse-ring ring-2" />
-          
+
           <div className="welcome-destination-logo">
-            <svg 
-              className="welcome-pin-svg" 
-              width="68" 
-              height="82" 
-              viewBox="0 0 32 40" 
-              fill="none" 
+            <svg
+              className="welcome-pin-svg"
+              width="68"
+              height="82"
+              viewBox="0 0 32 40"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
@@ -61,11 +61,11 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
                   <stop offset="100%" stopColor="#ec4899" />
                 </linearGradient>
               </defs>
-              <path 
-                d="M16 1C8.268 1 2 7.268 2 15C2 24.5 14.2 36.8 15.3 37.9C15.7 38.3 16.3 38.3 16.7 37.9C17.8 36.8 30 24.5 30 15C30 7.268 23.732 1 16 1Z" 
-                fill="url(#welcome-pin-grad)" 
-                stroke="#ffffff" 
-                strokeWidth="1.8" 
+              <path
+                d="M16 1C8.268 1 2 7.268 2 15C2 24.5 14.2 36.8 15.3 37.9C15.7 38.3 16.3 38.3 16.7 37.9C17.8 36.8 30 24.5 30 15C30 7.268 23.732 1 16 1Z"
+                fill="url(#welcome-pin-grad)"
+                stroke="#ffffff"
+                strokeWidth="1.8"
                 strokeLinejoin="round"
               />
               <circle cx="16" cy="14" r="5.5" fill="#ffffff" />
@@ -84,7 +84,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onDismiss }) => {
             <span>Visualisasi Linimasa Google Maps & GPS</span>
           </div>
           <h2 className="welcome-title text-gradient">
-            Selamat Datang di Visualisator Linimasa
+            Selamat Datang di Timeline Visualizer
           </h2>
           <p className="welcome-desc">
             Ubah data riwayat lokasi Google Maps Timeline, ekspor Takeout, dan catatan GPS mentah Anda menjadi animasi perjalanan 60 FPS yang mulus dan sinematik.
