@@ -213,10 +213,32 @@
 
 @media (max-width: 640px) {
   .map-floating-overlay {
-    top: 12px;
-    right: 12px;
+    top: 10px;
+    right: 10px;
+    gap: 6px;
   }
+
+  .map-theme-pill {
+    padding: 3px 4px;
+    gap: 2px;
+  }
+
+  .theme-btn {
+    padding: 4px 6px;
+    font-size: 0.72rem;
+  }
+
   .theme-btn span.theme-name {
-    display: none;
+    display: none !important;
+  }
+
+  .theme-btn.active {
+    padding: 4px 8px;
+  }
+
+  .map-action-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
   }
 }

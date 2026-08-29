@@ -283,3 +283,51 @@
   flex-direction: column;
   gap: 6px;
 }
+
+/* Mobile Responsiveness for Tutorial Guide */
+@media (max-width: 480px) {
+  .tutorial-guide-card {
+    padding: 10px 10px;
+    gap: 10px;
+  }
+
+  .tutorial-tab-btn {
+    padding: 6px 6px;
+    font-size: 0.70rem;
+    gap: 4px;
+  }
+
+  .tutorial-method-notice {
+    padding: 6px 8px;
+    font-size: 0.68rem;
+  }
+
+  .tutorial-step-card {
+    padding: 8px 8px;
+    gap: 8px;
+  }
+
+  .step-number-badge {
+    width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+  }
+
+  .step-title {
+    font-size: 0.73rem;
+  }
+
+  .step-desc {
+    font-size: 0.68rem;
+  }
+
+  .tutorial-tip-box {
+    padding: 6px 8px;
+    font-size: 0.68rem;
+  }
+
+  .demo-routes-toggle-btn {
+    padding: 6px 8px;
+    font-size: 0.70rem;
+  }
+}

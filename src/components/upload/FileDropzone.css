@@ -53,3 +53,18 @@
   gap: 8px;
   text-align: left;
 }
+
+@media (max-width: 480px) {
+  .dropzone-container {
+    padding: 20px 12px;
+    gap: 8px;
+  }
+
+  .dropzone-text {
+    font-size: 0.8rem;
+  }
+
+  .dropzone-subtext {
+    font-size: 0.70rem;
+  }
+}

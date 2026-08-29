@@ -34,15 +34,16 @@
 /* Glassmorphism Welcome Card (Hardware Composited) */
 .welcome-card {
   position: relative;
-  width: 100%;
+  width: min(92vw, 490px);
   max-width: 490px;
-  min-height: 520px;
+  min-height: auto;
+  max-height: calc(100dvh - 32px);
   background: rgba(18, 18, 30, 0.94);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
   border: 1px solid rgba(99, 102, 241, 0.35);
   border-radius: var(--radius-lg);
-  padding: 34px 28px;
+  padding: clamp(20px, 4vh, 34px) clamp(16px, 4vw, 28px);
   box-sizing: border-box;
   box-shadow:
     0 28px 70px rgba(0, 0, 0, 0.9),
@@ -53,10 +54,22 @@
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  gap: 18px;
-  overflow: hidden;
+  gap: clamp(12px, 2vh, 18px);
+  overflow-y: auto;
+  overflow-x: hidden;
   transform: translate3d(0, 0, 0);
   will-change: transform, opacity;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
+}
+
+.welcome-card::-webkit-scrollbar {
+  width: 4px;
+}
+
+.welcome-card::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.35);
+  border-radius: var(--radius-full);
 }
 
 /* Watermark Branding in Top Right Corner (Slightly bigger & polished) */
@@ -419,19 +432,87 @@
   }
 }
 
-/* Mobile Responsiveness */
+/* Mobile & Orientation Responsiveness */
 @media (max-width: 520px) {
   .welcome-card {
-    min-height: 480px;
-    padding: 24px 20px;
-    gap: 14px;
+    padding: 22px 18px;
+    gap: 12px;
+  }
+
+  .welcome-watermark {
+    top: 12px;
+    right: 14px;
+    font-size: 0.72rem;
+    padding: 3px 9px;
   }
 
   .welcome-features-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .welcome-feature-item {
+    padding: 8px 10px;
   }
 
   .welcome-title {
-    font-size: 1.25rem;
+    font-size: 1.22rem;
+  }
+
+  .welcome-desc {
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .welcome-btn-primary {
+    padding: 11px 16px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .welcome-card {
+    padding: 18px 14px;
+    gap: 10px;
+  }
+
+  .welcome-title {
+    font-size: 1.1rem;
+  }
+
+  .welcome-pin-svg {
+    width: 52px;
+    height: 64px;
+  }
+}
+
+/* Landscape Mobile & Low-Height Viewports */
+@media (max-height: 620px) {
+  .welcome-card {
+    padding: 16px 20px;
+    gap: 10px;
+    max-height: calc(100dvh - 16px);
+  }
+
+  .welcome-logo-container {
+    transform: scale(0.85);
+    margin: -6px 0;
+  }
+
+  .welcome-badge {
+    margin-bottom: 2px;
+  }
+
+  .welcome-features-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .welcome-desc {
+    display: none;
+  }
+
+  .welcome-btn-primary {
+    padding: 9px 14px;
   }
 }
