@@ -214,7 +214,7 @@ function App() {
       {/* Floating Sidebar UI with 2D Resizing (Box + Options Resized Together) & Minimize */}
       <div 
         ref={sidebarRef}
-        className={`sidebar glass-panel ${isMinimized ? 'minimized' : ''} ${isResizing ? 'resizing' : ''} animate-fade-in`}
+        className={`sidebar glass-panel ${isMinimized ? 'minimized' : ''} ${isResizing ? 'resizing' : ''} ${!journey ? 'initial-state' : 'has-journey'} animate-fade-in`}
         style={{
           width: isMinimized ? undefined : (panelWidth ? `${panelWidth}px` : undefined),
           zoom: (!isMinimized && panelScale !== 1) ? panelScale : undefined
@@ -259,7 +259,7 @@ function App() {
         </div>
         
         {!isMinimized && (
-          <div className="sidebar-body animate-fade-in">
+          <div className={`sidebar-body ${!journey ? 'sidebar-scrollable' : ''} animate-fade-in`}>
             {!journey ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '2px' }}>
                 {error && (
