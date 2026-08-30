@@ -4,11 +4,23 @@
   top: calc(20px + env(safe-area-inset-top, 0px));
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1200;
+  z-index: 800;
   pointer-events: none;
   user-select: none;
-  max-width: calc(100vw - 32px);
+  max-width: calc(100vw - 24px);
   width: max-content;
+  animation: hudPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hudPopIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .top-center-hud > * {

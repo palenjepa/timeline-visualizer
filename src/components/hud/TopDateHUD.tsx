@@ -32,7 +32,7 @@ export const TopDateHUD: React.FC<TopDateHUDProps> = ({
   const percentage = Math.round(progress * 100);
 
   return (
-    <div className="top-center-hud animate-fade-in">
+    <div className="top-center-hud">
       <div className="hud-capsule">
         <div className="hud-icon-wrap">
           <Clock size={15} style={{ color: 'var(--accent-primary)' }} />
