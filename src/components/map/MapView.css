@@ -120,10 +120,10 @@
 
 /* Floating Map Widgets Overlay (Top-Right Theme Selector & HUD) */
 .map-floating-overlay {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  z-index: 1000;
+  position: fixed;
+  top: calc(20px + env(safe-area-inset-top, 0px));
+  right: calc(20px + env(safe-area-inset-right, 0px));
+  z-index: 1100;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -211,13 +211,38 @@
   box-shadow: 0 4px 16px var(--accent-glow);
 }
 
-@media (max-width: 640px) {
+/* Tile layer hardware rendering for crispness */
+.leaflet-tile {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@media (max-width: 768px) {
   .map-floating-overlay {
-    top: 10px;
-    right: 10px;
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    right: calc(10px + env(safe-area-inset-right, 0px));
     gap: 6px;
   }
 
+  .destination-pin-svg {
+    transform: scale(0.76);
+  }
+
+  .destination-marker-container:hover .destination-pin-svg {
+    transform: scale(0.92) translateY(-2px);
+  }
+
+  .destination-ground-pulse {
+    transform: translateX(-50%) scale(0.7);
+  }
+
+  .pulse-marker-wrapper {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 640px) {
   .map-theme-pill {
     padding: 3px 4px;
     gap: 2px;

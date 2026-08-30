@@ -1,12 +1,18 @@
-/* Top Center Floating Date HUD — Exactly 50% Top Center of Screen */
+/* Fixed Floating Date HUD — Centered on Viewport */
 .top-center-hud {
-  position: absolute;
-  top: 24px;
+  position: fixed;
+  top: calc(20px + env(safe-area-inset-top, 0px));
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
-  pointer-events: auto;
+  z-index: 1200;
+  pointer-events: none;
   user-select: none;
+  max-width: calc(100vw - 32px);
+  width: max-content;
+}
+
+.top-center-hud > * {
+  pointer-events: auto;
 }
 
 .hud-capsule {
@@ -22,6 +28,8 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(99, 102, 241, 0.25);
   color: var(--text-primary);
   white-space: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
   transition: all var(--transition-normal);
 }
 
@@ -75,6 +83,7 @@
   flex-direction: column;
   gap: 1px;
   text-align: left;
+  min-width: 0;
 }
 
 .hud-title-row {
@@ -89,12 +98,14 @@
   color: var(--text-secondary);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .hud-date-row {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
 }
 
 .hud-date {
@@ -102,6 +113,9 @@
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hud-time-tag {
@@ -115,6 +129,7 @@
   font-size: 0.72rem;
   font-weight: 600;
   color: #c7d2fe;
+  flex-shrink: 0;
 }
 
 .hud-progress-tag {
@@ -128,6 +143,7 @@
   font-size: 0.74rem;
   font-weight: 600;
   color: var(--text-primary);
+  flex-shrink: 0;
 }
 
 .hud-progress-dot {
@@ -143,24 +159,24 @@
 }
 
 /* Responsive adjustments across tablets, mobiles & orientations */
-@media (max-width: 960px) and (min-width: 641px) {
+@media (max-width: 960px) and (min-width: 769px) {
   .top-center-hud {
-    top: 76px;
+    top: calc(76px + env(safe-area-inset-top, 0px));
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .top-center-hud {
     top: auto;
-    bottom: 16px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
+    max-width: calc(100vw - 20px);
   }
 
   .hud-capsule {
     padding: 4px 10px;
     gap: 6px;
-    max-width: calc(100vw - 24px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(99, 102, 241, 0.2);
   }
 
@@ -170,27 +186,27 @@
   }
 
   .hud-label {
-    font-size: 0.52rem;
+    font-size: 0.50rem;
   }
 
   .hud-date {
-    font-size: 0.72rem;
+    font-size: 0.70rem;
   }
 
   .hud-time-tag {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     padding: 1px 4px;
   }
 
   .hud-progress-tag {
-    font-size: 0.68rem;
-    padding: 2px 6px;
+    font-size: 0.65rem;
+    padding: 2px 5px;
   }
 }
 
 @media (max-height: 520px) {
   .top-center-hud {
-    bottom: 8px;
+    bottom: calc(6px + env(safe-area-inset-bottom, 0px));
   }
 
   .hud-label {

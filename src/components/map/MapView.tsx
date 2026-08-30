@@ -271,6 +271,8 @@ export function MapView({
           url={currentTheme.url}
           attribution={currentTheme.attribution}
           subdomains={currentTheme.subdomains || ['a', 'b', 'c', 'd']}
+          detectRetina={true}
+          maxZoom={currentTheme.maxZoom || 19}
         />
 
         {/* City and Street Labels Layer (e.g. for Midnight and Satellite) */}
@@ -281,6 +283,8 @@ export function MapView({
             attribution=""
             subdomains={currentTheme.subdomains || ['a', 'b', 'c', 'd']}
             zIndex={400}
+            detectRetina={true}
+            maxZoom={currentTheme.maxZoom || 19}
           />
         )}
 

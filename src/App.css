@@ -1,9 +1,15 @@
 .app-container {
   display: flex;
-  height: 100vh;
+  height: 100%;
+  height: 100dvh;
   width: 100vw;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .map-container {
@@ -419,31 +425,51 @@ button {
 /* Comprehensive Responsive Breakpoints & Device Adaptations */
 @media (max-width: 768px) {
   .sidebar {
-    top: 12px;
-    left: 12px;
-    right: 12px;
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    left: calc(10px + env(safe-area-inset-left, 0px));
+    right: calc(10px + env(safe-area-inset-right, 0px));
     width: auto !important;
     min-width: 0 !important;
     max-width: none !important;
     padding: 14px 16px;
     border-radius: var(--radius-md);
+    max-height: calc(100dvh - 20px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    overflow: hidden;
+  }
+
+  .sidebar.has-journey {
+    max-height: calc(100dvh - 84px);
+    overflow-y: auto;
+    scrollbar-width: thin;
   }
 
   .sidebar.initial-state {
-    max-height: calc(100dvh - 24px);
+    max-height: calc(100dvh - 20px);
   }
 
   .sidebar-scrollable {
-    max-height: calc(100dvh - 100px);
+    max-height: calc(100dvh - 90px);
     padding-right: 4px;
     margin-right: -2px;
   }
 
+  /* Minimized sidebar leaves top-right clear for Map Type & Action controls */
   .sidebar.minimized {
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    left: calc(10px + env(safe-area-inset-left, 0px));
+    right: auto !important;
     width: auto !important;
     min-width: 0 !important;
-    max-width: calc(100vw - 24px) !important;
-    padding: 10px 14px;
+    max-width: calc(100vw - 125px) !important;
+    padding: 8px 12px;
+    overflow: hidden;
+  }
+
+  .sidebar.minimized .header h1 {
+    font-size: 0.92rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .sidebar-resize-edge-r,
@@ -455,11 +481,15 @@ button {
 
 @media (max-width: 480px) {
   .sidebar {
-    top: 8px;
-    left: 8px;
-    right: 8px;
+    top: calc(8px + env(safe-area-inset-top, 0px));
+    left: calc(8px + env(safe-area-inset-left, 0px));
+    right: calc(8px + env(safe-area-inset-right, 0px));
     padding: 12px 14px;
     gap: 10px;
+  }
+
+  .sidebar.has-journey {
+    max-height: calc(100dvh - 76px);
   }
 
   .sidebar.initial-state {
@@ -467,7 +497,14 @@ button {
   }
 
   .sidebar-scrollable {
-    max-height: calc(100dvh - 84px);
+    max-height: calc(100dvh - 80px);
+  }
+
+  .sidebar.minimized {
+    top: calc(8px + env(safe-area-inset-top, 0px));
+    left: calc(8px + env(safe-area-inset-left, 0px));
+    max-width: calc(100vw - 110px) !important;
+    padding: 6px 10px;
   }
 
   .sidebar-body {
@@ -475,11 +512,11 @@ button {
   }
 
   .header h1 {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .header p {
-    font-size: 0.72rem;
+    font-size: 0.70rem;
   }
 
   .privacy-badge {
@@ -496,12 +533,16 @@ button {
     gap: 8px;
   }
 
+  .sidebar.has-journey {
+    max-height: calc(100dvh - 48px);
+  }
+
   .sidebar.initial-state {
     max-height: calc(100dvh - 16px);
   }
 
   .sidebar-scrollable {
-    max-height: calc(100dvh - 70px);
+    max-height: calc(100dvh - 65px);
   }
 
   .sidebar-body {
