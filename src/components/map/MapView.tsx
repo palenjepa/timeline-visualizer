@@ -271,7 +271,7 @@ export function MapView({
           url={currentTheme.url}
           attribution={currentTheme.attribution}
           subdomains={currentTheme.subdomains || ['a', 'b', 'c', 'd']}
-          detectRetina={true}
+          detectRetina={false}
           maxNativeZoom={currentTheme.maxNativeZoom || 16}
           maxZoom={currentTheme.maxZoom || 20}
           keepBuffer={12}
@@ -286,7 +286,7 @@ export function MapView({
             attribution=""
             subdomains={currentTheme.subdomains || ['a', 'b', 'c', 'd']}
             zIndex={400}
-            detectRetina={true}
+            detectRetina={false}
             maxNativeZoom={currentTheme.maxNativeZoom || 16}
             maxZoom={currentTheme.maxZoom || 20}
             keepBuffer={12}
