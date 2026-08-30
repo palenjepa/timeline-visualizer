@@ -220,9 +220,10 @@
 
 @media (max-width: 768px) {
   .map-floating-overlay {
-    top: calc(10px + env(safe-area-inset-top, 0px));
+    top: calc(64px + env(safe-area-inset-top, 0px));
     right: calc(10px + env(safe-area-inset-right, 0px));
     gap: 6px;
+    z-index: 500;
   }
 
   .destination-pin-svg {

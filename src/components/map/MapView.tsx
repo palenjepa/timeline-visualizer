@@ -165,7 +165,7 @@ function MapController({
   // Continuous smooth camera tracking ONLY when following marker is active
   useEffect(() => {
     if (followCamera && currentPosition) {
-      map.setView([currentPosition.lat, currentPosition.lng], map.getZoom(), { animate: false });
+      map.panTo([currentPosition.lat, currentPosition.lng], { animate: false });
     }
   }, [currentPosition, followCamera, map]);
 
@@ -272,7 +272,10 @@ export function MapView({
           attribution={currentTheme.attribution}
           subdomains={currentTheme.subdomains || ['a', 'b', 'c', 'd']}
           detectRetina={true}
-          maxZoom={currentTheme.maxZoom || 19}
+          maxNativeZoom={currentTheme.maxNativeZoom || 16}
+          maxZoom={currentTheme.maxZoom || 20}
+          keepBuffer={12}
+          updateInterval={50}
         />
 
         {/* City and Street Labels Layer (e.g. for Midnight and Satellite) */}
@@ -284,7 +287,10 @@ export function MapView({
             subdomains={currentTheme.subdomains || ['a', 'b', 'c', 'd']}
             zIndex={400}
             detectRetina={true}
-            maxZoom={currentTheme.maxZoom || 19}
+            maxNativeZoom={currentTheme.maxNativeZoom || 16}
+            maxZoom={currentTheme.maxZoom || 20}
+            keepBuffer={12}
+            updateInterval={50}
           />
         )}
 

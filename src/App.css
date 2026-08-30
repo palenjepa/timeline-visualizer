@@ -453,20 +453,20 @@ button {
     margin-right: -2px;
   }
 
-  /* Minimized sidebar leaves top-right clear for Map Type & Action controls */
+  /* Minimized sidebar is a sleek top header pill; Map Type sits right below it */
   .sidebar.minimized {
     top: calc(10px + env(safe-area-inset-top, 0px));
     left: calc(10px + env(safe-area-inset-left, 0px));
-    right: auto !important;
+    right: calc(10px + env(safe-area-inset-right, 0px)) !important;
     width: auto !important;
     min-width: 0 !important;
-    max-width: calc(100vw - 125px) !important;
-    padding: 8px 12px;
+    max-width: none !important;
+    padding: 8px 14px;
     overflow: hidden;
   }
 
   .sidebar.minimized .header h1 {
-    font-size: 0.92rem;
+    font-size: 0.96rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -503,8 +503,9 @@ button {
   .sidebar.minimized {
     top: calc(8px + env(safe-area-inset-top, 0px));
     left: calc(8px + env(safe-area-inset-left, 0px));
-    max-width: calc(100vw - 110px) !important;
-    padding: 6px 10px;
+    right: calc(8px + env(safe-area-inset-right, 0px)) !important;
+    max-width: none !important;
+    padding: 6px 12px;
   }
 
   .sidebar-body {
